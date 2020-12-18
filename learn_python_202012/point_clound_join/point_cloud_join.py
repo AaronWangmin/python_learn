@@ -2,7 +2,7 @@
 import os
 
 # get project_dir
-project_dir = "/home/slam/WM-20201006/learn_python_202012/point_clound_join/20201205115519_WYT_SHANGHAI_AFA1119"
+project_dir = "/home/slam/WM-20201006/learn_python_202012/point_cloud_join/20201205115519_WYT_SHANGHAI_AFA1119"
 print("project_dir:" + project_dir)
 
 # get projetname,20201205115519_WYT_SHANGHAI_AFA1119
@@ -36,7 +36,6 @@ outputDir = [pointcloud_out_dir + "/LiDAR_1_POINTCLOUD", pointcloud_out_dir +
 
 # read ins_pro file
 trajectoryFile_dir = open(trajectoryFile, "r")
-# trajectoryFile_content = trajectoryFile_dir.readlines()
 
 refrencePointB_value = 0
 refrencePointL_value = 0
@@ -53,9 +52,15 @@ for i in range(1, 52):
 trajectoryFile_dir.close
 
 # read templete_file
-templete_file = open(os.path.dirname(__file__) +
+# templete_file = open(os.path.dirname(__file__) +
+#                      "/config/datamappingConfig_example_32E2", "r")
+
+# abspath = os.path.abspath(__file__)
+
+templete_file = open(os.path.dirname(os.path.abspath(__file__)) +
                      "/config/datamappingConfig_example_32E2", "r")
 templete_content = templete_file.readlines()
+
 
 # create datamappingConfig of lidar1
 for lidarID in range(1, 4):
@@ -128,8 +133,8 @@ for lidarID in range(1, 4):
                 str(refrencePointH_value) + "\n"
 
     # creat lidar_jion_config file of Lidar1
-    datamappingConfig_dir = os.path.dirname(
-        __file__) + "/config/datamappingConfig_" + str(lidarID)
+    datamappingConfig_dir = os.path.dirname(os.path.abspath(
+        __file__)) + "/config/datamappingConfig_" + str(lidarID)
 
     datamappingConfig = open(datamappingConfig_dir, "w+")
     datamappingConfig.writelines(templete_content)
