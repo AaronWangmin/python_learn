@@ -1,0 +1,53 @@
+#pointcloud record directory
+pointcloudDir /media/yanzhe/SHCJ01/1205/20201205115519_WYT_SHANGHAI_AFA1119/03_LiDAR_RAW/01_POINTCLOUD/LiDAR_2
+
+#trajectory file path
+trajectoryFile /media/yanzhe/SHCJ01/1205/20201205115519_WYT_SHANGHAI_AFA1119/06_INS_PROC/20201205115519_WYT_SHANGHAI_AFA1119_Proc.nav
+
+#Proc_local.pos file output path
+proclocalPos /media/yanzhe/SHCJ01/1205/20201205115519_WYT_SHANGHAI_AFA1119/06_INS_PROC/20201205115519_WYT_SHANGHAI_AFA1119_Proc.pos
+
+#output directory
+outputDir /media/yanzhe/SHCJ01/1205/20201205115519_WYT_SHANGHAI_AFA1119/11_POINTCLOUD/LiDAR_2_POINTCLOUD
+
+#calibration param(Lidar 2 IMU) file
+calibParamFile /home/yanzhe/projects/mappingConfig/car_5/configCPT20201103_32E2
+
+#file type of point cloud output, 0: las(default), 1: laz
+outputfileType 0
+
+#max distance of point cloud to save; no limit if not specified
+blockDis 100
+
+#lidar type, 128(default), 16, 32, 64
+lidarType 32
+
+#file type of point cloud input, 0: scan(default), 1: pcd
+inputfileType 0
+
+#min y while cutting front ground in IMU coordinate
+frontGroundMinY 0
+#max y while cutting front ground in IMU coordinate
+frontGroundMaxY 0
+#min y while cutting back ground in IMU coordinate
+backGroundMinY -40
+#max y while cutting back ground in IMU coordinate
+backGroundMaxY -6
+#forward degree
+forwardDegree 8
+
+         
+
+#30.4948110549 114.1789443363 10.970
+#30.4781016117 114.1926012016 10.76 
+#30.4624383556 114.1944809716 14.93
+#30.4729996856 114.1676912528 12.282
+#refrence point B(lat)
+refrencePointB 31.1198513448
+#refrence point L(lon)
+refrencePointL 121.3706028958
+#refrence point H(alt)
+refrencePointH 18.311
+
+#visualization flag, 0: hidden(default), 1: show
+visualization 0
