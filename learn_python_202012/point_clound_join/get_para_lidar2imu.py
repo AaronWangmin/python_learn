@@ -9,7 +9,7 @@ def get_project_name(project_dir):
 
 def get_para_dir(project_dir):
     project_name = get_project_name(project_dir)
-    para_dir = project_dir + "\\" + project_name + ".para"
+    para_dir = project_dir + "/" + project_name + ".para"
     return para_dir
 
 
@@ -18,7 +18,7 @@ def get_vehicle_PlateNumber(project_dir):
     return vehicle_plate_number
 
 
-def get_lidar2imu_line(project_dir, lidar_id):
+def get_lidar2imu_line(project_dir, lidar_name):
 
     para_dir = get_para_dir(project_dir)
     para_file = open(para_dir, "r")
@@ -28,14 +28,19 @@ def get_lidar2imu_line(project_dir, lidar_id):
     vehicle_list = para_content["vehicle"]
     # print(vehicle_list)
 
-    LidarParam = []
+    LidarParams = []
     vehicle_plate_number = get_vehicle_PlateNumber(project_dir)
     for vehicle in vehicle_list:
         if vehicle["PlateNumber"] == vehicle_plate_number:
-            LidarParam = vehicle["LidarParam"]
+            LidarParams = vehicle["LidarParam"]
             break
 
-    Lidar2IMU = LidarParam[lidar_id - 1]["LiDAR-IMUParadata"]
+    Lidar2IMU = []
+    for lidar_param in LidarParams:
+        if lidar_param["LiDARName"] == lidar_name:
+            Lidar2IMU = lidar_param["LiDAR-IMUParadata"]
+
+    # Lidar2IMU = LidarParams[lidar_id - 1]["LiDAR-IMUParadata"]
     # print(Lidar2IMU)
 
     return matrix2line(Lidar2IMU)
@@ -49,8 +54,23 @@ def matrix2line(matrix):
     return line
 
 
-project_dir = "G:\\learn_python_202012\\point_clound_join\\20201205115519_WYT_SHANGHAI_AFA1119"
+def creat_lidar2imu_file(project_dir, lidar_name):
+
+    lidar2imu_line = get_lidar2imu_line(project_dir, lidar_name)
+
+    lidar2imu_file_dir = project_dir + "/" + \
+        get_project_name(project_dir) + "_" + lidar_name
+
+    lidar2imu_file = open(lidar2imu_file_dir, "w+")
+    lidar2imu_file.writelines(lidar2imu_line)
+
+    lidar2imu_file.close
+
+
+project_dir = "/home/slam/WM-20201006/learn_python_202012/point_cloud_join/20201205115519_WYT_SHANGHAI_AFA1119"
 print(get_project_name(project_dir))
 print(get_para_dir(project_dir))
 print(get_vehicle_PlateNumber(project_dir))
-print(get_lidar2imu_line(project_dir, 1))
+print(get_lidar2imu_line(project_dir, "LiDAR_1"))
+
+creat_lidar2imu_file(project_dir, "LiDAR_1")
