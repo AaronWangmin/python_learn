@@ -128,7 +128,7 @@ def createCloudParaFile(project_dir):
 
 
 # TEST...........
-project_dir = "/home/slam/WM-20201006/learn_python_202012/point_cloud_join/2020120511551119_WYT_SHANGHAI_AFA1119"
+# project_dir = "/home/slam/WM-20201006/learn_python_202012/point_cloud_join/2020120511551119_WYT_SHANGHAI_AFA1119"
 # # create_11_pointcloud_dir(project_dir, "LiDAR_1")
 
 # print(get_sigle_scanfolder_path(project_dir, "LiDAR_2"))

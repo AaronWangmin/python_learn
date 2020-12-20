@@ -57,7 +57,7 @@ def getVehiclePara(project_dir):
             return vehicle
 
 
-project_dir = "/home/slam/WM-20201006/learn_python_202012/point_cloud_join/2020120511551119_WYT_SHANGHAI_AFA1119"
+# project_dir = "/home/slam/WM-20201006/learn_python_202012/point_cloud_join/2020120511551119_WYT_SHANGHAI_AFA1119"
 # print(projectPathHandle.get_project_name(project_dir))
 # print(projectPathHandle.get_para_dir(project_dir))
 # print(projectPathHandle.get_vehicle_PlateNumber(project_dir))
